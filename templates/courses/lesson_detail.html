@@ -1,0 +1,40 @@
+<!-- templates/courses/lesson_detail.html -->
+{% extends 'base.html' %}
+
+{% block title %}{{ lesson.title }}{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">{{ lesson.title }}</h1>
+<div class="card mb-4">
+    <div class="card-body">
+        {{ lesson.content|safe }}
+    </div>
+</div>
+
+{% if lesson.attachment %}
+    <h3>Lesson Material:</h3>
+    <a href="{{ lesson.attachment.url }}" class="btn btn-primary mb-4" target="_blank">Download {{ lesson.attachment.name }}</a>
+{% endif %}
+
+{% if user.is_staff %}
+    <h3>Upload Lesson Material:</h3>
+    <form method="post" enctype="multipart/form-data" class="mb-4">
+        {% csrf_token %}
+        <div class="input-group">
+            <input type="file" name="attachment" class="form-control" required>
+            <button type="submit" name="upload_file" class="btn btn-outline-secondary">Upload</button>
+        </div>
+    </form>
+{% endif %}
+
+{% if not user_progress.completed %}
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" name="complete_lesson" class="btn btn-success">Mark as Completed</button>
+    </form>
+{% else %}
+    <div class="alert alert-success" role="alert">
+        You have completed this lesson on {{ user_progress.completed_at }}.
+    </div>
+{% endif %}
+{% endblock %}

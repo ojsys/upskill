@@ -1,0 +1,29 @@
+
+{% extends 'base.html' %}
+
+{% block title %}{{ course.title }}{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">{{ course.title }}</h1>
+<p>{{ course.description }}</p>
+
+<h2 class="mt-4 mb-3">Course Progress</h2>
+<div class="progress mb-3">
+    <div class="progress-bar" role="progressbar" style="width: {{ progress_percentage }}%;" aria-valuenow="{{ progress_percentage }}" aria-valuemin="0" aria-valuemax="100">{{ progress_percentage|floatformat:1 }}%</div>
+</div>
+<p>{{ completed_lessons }} / {{ total_lessons }} lessons completed</p>
+
+<h2 class="mt-4 mb-3">Lessons</h2>
+<div class="list-group">
+    {% for lesson in lessons %}
+        <a href="{% url 'lesson_detail' lesson.id %}" class="list-group-item list-group-item-action{% if lesson.userprogress_set.filter(user=user, completed=True).exists %} list-group-item-success{% endif %}">
+            {{ lesson.title }}
+            {% if lesson.userprogress_set.filter(user=user, completed=True).exists %}
+                <span class="badge bg-success float-end">Completed</span>
+            {% endif %}
+        </a>
+    {% empty %}
+        <p>No lessons available.</p>
+    {% endfor %}
+</div>
+{% endblock %}
