@@ -72,6 +72,27 @@
             width: 100%;
             margin-top: calc(-1 * var(--footer-height));
         }
+        .form-floating > .form-control,
+        .form-floating > .form-control-plaintext {
+            height: calc(3.5rem + 2px);
+            line-height: 1.25;
+        }
+
+        .form-floating > label {
+            padding: 1rem 0.75rem;
+            color: #6c757d;
+        }
+
+        .form-floating > .form-control:focus ~ label,
+        .form-floating > .form-control:not(:placeholder-shown) ~ label {
+            transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+            color: var(--primary-color);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+        }
     </style>
 </head>
 <body>
@@ -124,7 +145,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h5>About LMS Platform</h5>
+                    <h5>About UpSkill</h5>
                     <p>Our mission is to provide quality education to everyone, anywhere.</p>
                 </div>
                 <div class="col-md-3">

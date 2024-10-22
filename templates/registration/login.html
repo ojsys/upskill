@@ -5,28 +5,86 @@
 
 {% block content %}
 <div class="row justify-content-center">
-    <div class="col-md-6">
-        <div class="card">
+    <div class="col-md-6 col-lg-5">
+        <div class="card shadow-lg border-0 rounded-lg mt-5">
+            <div class="card-header bg-primary text-white">
+                <h3 class="text-center font-weight-light my-4">Login</h3>
+            </div>
             <div class="card-body">
-                <h2 class="card-title">Log In</h2>
-                <form method="post">
+                <form method="post" novalidate>
                     {% csrf_token %}
-                    {% for field in form %}
-                        <div class="mb-3">
-                            <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
-                            {{ field }}
-                            {% if field.errors %}
-                                <div class="alert alert-danger">
-                                    {{ field.errors }}
-                                </div>
-                            {% endif %}
+                    <div class="form-floating mb-3">
+                        {{ form.username }}
+                        <label for="floatingUsername">Username</label>
+                        {% if form.username.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.username.errors|join:", " }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{ form.password }}
+                        <label for="floatingPassword">Password</label>
+                        {% if form.password.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.password.errors|join:", " }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {% for error in form.non_field_errors %}
+                                {{ error }}
+                            {% endfor %}
                         </div>
-                    {% endfor %}
-                    <button type="submit" class="btn btn-primary">Log In</button>
+                    {% endif %}
+                    <div class="d-grid align-items-center mt-4 mb-0">
+                        <a class="small text-decoration-none text-center py-3" href="#">Forgot Password?</a>
+                        <button type="submit" class="btn btn-primary px-4">Login</button>
+                    </div>
                 </form>
-                <p class="mt-3">Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
+            </div>
+            <div class="card-footer text-center py-3">
+                <div class="small">
+                    <a href="{% url 'register' %}" class="text-decoration-none">Need an account? Sign up!</a>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+    .form-floating > .form-control {
+        height: calc(3.5rem + 2px);
+        padding: 1rem 0.75rem;
+    }
+    .form-floating > .form-control:focus,
+    .form-floating > .form-control:not(:placeholder-shown) {
+        padding-top: 1.625rem;
+        padding-bottom: 0.625rem;
+    }
+    .form-floating > label {
+        padding: 1rem 0.75rem;
+    }
+    .card-header {
+        background-color: var(--primary-color) !important;
+    }
+    .btn-primary {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+    }
+    .btn-primary:hover {
+        background-color: #2980b9;
+        border-color: #2980b9;
+    }
+    .invalid-feedback {
+        color: #dc3545;
+        font-size: 0.875em;
+    }
+    .alert-danger {
+        background-color: #f8d7da;
+        border-color: #f5c2c7;
+        color: #842029;
+    }
+</style>
 {% endblock %}
