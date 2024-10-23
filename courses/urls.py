@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 from . import views
 
@@ -9,4 +11,4 @@ urlpatterns = [
     path('course/<int:course_id>/enroll/', views.enroll_course, name='enroll_course'),
     path('lesson/<int:lesson_id>/', views.lesson_detail, name='lesson_detail'),
     path('quiz/<int:quiz_id>/', views.take_quiz, name='take_quiz'),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
