@@ -28,6 +28,8 @@
 	<!-- Theme CSS -->
 	<link id="style-switch" rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
 
+
+
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	
 	</script>
@@ -172,7 +174,7 @@
 	
 <!-- =======================
 Main Banner START -->
-<section class="position-relative overflow-hidden pt-5 pt-lg-3">
+<section class="position-relative overflow-hidden mt-2 pt-5 pt-lg-3">
 	<!-- SVG START -->
 	<figure class="position-absolute top-50 start-0 translate-middle-y ms-n7 d-none d-xxl-block">
 		<svg class="rotate-74 fill-danger opacity-1">
@@ -380,13 +382,13 @@ Main Banner START -->
 				</figure>
 				<!-- Icon logos START -->
 				<div class="p-2 bg-white shadow rounded-3 position-absolute top-50 start-0 translate-middle-y mt-n7 d-none d-sm-block">
-					<img src="assets/images/client/science.svg" alt="Icon">
+					<img src="{% static 'images/client/science.svg' %}" alt="Icon">
 				</div>
 				<div class="p-2 bg-white shadow rounded-3 position-absolute top-0 end-0 me-5">
-					<img src="assets/images/client/angular.svg" alt="Icon">
+					<img src="{% static 'images/client/angular.svg' %}" alt="Icon">
 				</div>
 				<div class="p-2 bg-white shadow rounded-3 position-absolute top-50 end-0 translate-middle-y mt-5 ms-5 d-none d-lg-block z-index-9">
-					<img src="assets/images/client/figma.svg" alt="Icon">
+					<img src="{% static 'images/client/figma.svg' %}" alt="Icon">
 				</div>
 				<!-- Icon logos END -->
 
@@ -403,33 +405,10 @@ Main Banner START -->
 					</div>
 				</div>
 
-				<!-- Active student --> 
-				<div class="p-3 bg-success d-inline-block rounded-4 shadow-lg position-absolute top-50 end-0 translate-middle-y mt-n7 z-index-1 d-none d-md-block" style="background:url(assets/images/pattern/01.png) no-repeat center center; background-size:cover;">
-					<p class="text-white">Our daily new students</p>
-					<!-- Avatar group -->
-					<ul class="avatar-group mb-0">
-						<li class="avatar avatar-sm">
-							<img class="avatar-img rounded-circle border-white" src="assets/images/avatar/01.jpg" alt="avatar">
-						</li>
-						<li class="avatar avatar-sm">
-							<img class="avatar-img rounded-circle border-white" src="assets/images/avatar/02.jpg" alt="avatar">
-						</li>
-						<li class="avatar avatar-sm">
-							<img class="avatar-img rounded-circle border-white" src="assets/images/avatar/03.jpg" alt="avatar">
-						</li>
-						<li class="avatar avatar-sm">
-							<img class="avatar-img rounded-circle border-white" src="assets/images/avatar/04.jpg" alt="avatar">
-						</li>
-						<li class="avatar avatar-sm">
-							<div class="avatar-img rounded-circle border-white bg-primary">
-								<span class="text-white position-absolute top-50 start-50 translate-middle small">1K+</span>
-							</div>
-						</li>
-					</ul>
-				</div>
+				
 				<!-- Image -->
 				<div class="position-relative">
-					<img src="assets/images/element/07.png" alt="">
+					<img src="{% static 'images/element/07.png' %}" alt="">
 				</div>
 			</div>
 			<!-- Right content END -->
@@ -1890,8 +1869,8 @@ Footer START -->
 			<div class="col-lg-3">
 				<!-- logo -->
 				<a class="me-0" href="index.html">
-					<img class="light-mode-item h-40px" src="assets/images/logo.svg" alt="logo">
-					<img class="dark-mode-item h-40px" src="assets/images/logo-light.svg" alt="logo">
+					<img class="light-mode-item h-40px" src="{% static 'images/logo_upskill.png' %}" width="100" alt="logo">
+					<!-- <img class="dark-mode-item h-40px" src="{% static 'images/logo-light.svg' %}" width="100" alt="logo"> -->
 				</a>
 				<p class="my-3">Eduport education theme, built specifically for the education centers which is dedicated to teaching and involve learners.</p>
 				<!-- Social media icon -->
@@ -1913,7 +1892,6 @@ Footer START -->
 						<ul class="nav flex-column">
 							<li class="nav-item"><a class="nav-link" href="#">About us</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">Contact us</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">News and Blogs</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">Library</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">Career</a></li>
 						</ul>
@@ -1923,10 +1901,9 @@ Footer START -->
 					<div class="col-6 col-md-4">
 						<h5 class="mb-2 mb-md-4">Community</h5>
 						<ul class="nav flex-column">
-							<li class="nav-item"><a class="nav-link" href="#">Documentation</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">Faq</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">Forum</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">Sitemap</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">Join Our WhatsApp</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">Join Our Telegram</a></li>
+							<li class="nav-item"><a class="nav-link" href="#">Join Our Slack</a></li>
 						</ul>
 					</div>
 
@@ -1948,20 +1925,20 @@ Footer START -->
 				<h5 class="mb-2 mb-md-4">Contact</h5>
 				<!-- Time -->
 				<p class="mb-2">
-					Toll free:<span class="h6 fw-light ms-2">+1234 568 963</span>
-					<span class="d-block small">(9:AM to 8:PM IST)</span>
+					Mobile Number:<span class="h6 fw-light ms-2">+234 901 517 0830</span>
+					<span class="d-block small">(9:AM to 8:PM WAT)</span>
 				</p>
 
-				<p class="mb-0">Email:<span class="h6 fw-light ms-2">example@gmail.com</span></p>
+				<p class="mb-0">Email:<span class="h6 fw-light ms-2">info@africaplanfoundation.org</span></p>
 
 				<div class="row g-2 mt-2">
 					<!-- Google play store button -->
 					<div class="col-6 col-sm-4 col-md-3 col-lg-6">
-						<a href="#"> <img src="assets/images/client/google-play.svg" alt=""> </a>
+						<a href="#"> <img src="{% static 'images/client/google-play.svg' %}" alt=""> </a>
 					</div>
 					<!-- App store button -->
 					<div class="col-6 col-sm-4 col-md-3 col-lg-6">
-						<a href="#"> <img src="assets/images/client/app-store.svg" alt="app-store"> </a>
+						<a href="#"> <img src="{% static 'images/client/app-store.svg' %}" alt="app-store"> </a>
 					</div>
 				</div> <!-- Row END -->
 			</div> 
@@ -2016,8 +1993,8 @@ Footer END -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.3.0/js/glightbox.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@srexi/purecounterjs@1.5.0/dist/purecounter_vanilla.min.js"></script>
 
-<!-- Template Functions -->
-<script src="{% static 'static/js/functions.js' %}"></script>
 
+<!-- Template Functions -->
+<script src="{% static 'js/functions.js' %}"></script>
 </body>
 </html>
