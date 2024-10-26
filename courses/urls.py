@@ -13,5 +13,3 @@ urlpatterns = [
     path('quiz/<int:quiz_id>/', views.take_quiz, name='take_quiz'),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

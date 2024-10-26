@@ -1,28 +1,33 @@
 
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
-<h1 class="mb-4">Welcome, {{ user.username }}!</h1>
-<h2 class="mb-3">Your Courses</h2>
+<div class="container">
+    <h1 class="mb-lg-5 mt-lg-5">Welcome, {{ user.username }}!</h1>
+    <h2 class="mb-3">Your Courses</h2>
 {% if course_progress %}
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-        {% for course in course_progress %}
-            <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ course.title }}</h5>
-                        <p class="card-text">Progress: {{ course.completed_lessons }} / {{ course.total_lessons }} lessons completed</p>
-                        <div class="progress mb-3">
-                            <div class="progress-bar" role="progressbar" style="width: {{ course.progress_percentage }}%;" aria-valuenow="{{ course.progress_percentage }}" aria-valuemin="0" aria-valuemax="100">{{ course.progress_percentage|floatformat:1 }}%</div>
+        <div class="container">
+            <div class="row g-4">
+                {% for course in course_progress %}
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ course.title }}</h5>
+                                <p class="card-text">Progress: {{ course.completed_lessons }} / {{ course.total_lessons }} lessons completed</p>
+                                <div class="progress mb-3">
+                                    <div class="progress-bar" role="progressbar" style="width: {{ course.progress_percentage }}%;" aria-valuenow="{{ course.progress_percentage }}" aria-valuemin="0" aria-valuemax="100">{{ course.progress_percentage|floatformat:1 }}%</div>
+                                </div>
+                                <a href="{% url 'course_detail' course.id %}" class="btn btn-primary">Continue Course</a>
+                            </div>
                         </div>
-                        <a href="{% url 'course_detail' course.id %}" class="btn btn-primary">Continue Course</a>
                     </div>
-                </div>
+                {% endfor %}
             </div>
-        {% endfor %}
-    </div>
+        </div>
+</div>
 {% else %}
     <p>You are not enrolled in any courses yet.</p>
     <a href="{% url 'course_list' %}" class="btn btn-primary">Explore Courses</a>

@@ -1,74 +1,47 @@
 <!-- templates/registration/register.html -->
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Register{% endblock %}
 
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-md-6 col-lg-5">
-        <div class="card shadow-lg border-0 rounded-lg mt-5">
-            <div class="card-header bg-primary text-white">
-                <h3 class="text-center font-weight-light my-4">Create Account</h3>
-            </div>
-            <div class="card-body">
-                <form method="post" novalidate>
-                    {% csrf_token %}
-                    {% for field in form %}
-                        <div class="form-floating mb-3">
-                            {{ field }}
-                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                            {% if field.errors %}
-                                <div class="invalid-feedback d-block">
-                                    {{ field.errors|join:", " }}
-                                </div>
-                            {% endif %}
+<div class="container mb-lg-5">
+    <div class="row justify-content-center mb-lg-5">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 mt-lg-5 mb-lg-5 justify-content-center">
+            <img class="d-block" style="margin: 0 auto;" src="{% static 'images/logo_upskill.png' %}" width="100" alt="Logo">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="text-center font-weight-light my-4">Create Account</h3>
+                </div>
+                <div class="card-body">
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        {% for field in form %}
+                            <div class="form-floating mb-3">
+                                {{ field }}
+                                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                {% if field.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {{ field.errors|join:", " }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                        <div class="mt-4 mb-0">
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                            </div>
                         </div>
-                    {% endfor %}
-                    <div class="mt-4 mb-0">
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-primary btn-block">Create Account</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="card-footer text-center py-3">
-                <div class="small"><a href="{% url 'login' %}" class="text-decoration-none">Have an account? Go to login</a></div>
+                    </form>
+                </div>
+                <div class="card-footer text-center py-3">
+                    <div class="small"><a href="{% url 'login' %}" class="text-decoration-none">Have an account? Go to login</a></div>
+                </div>
             </div>
         </div>
+        <div class="col-md-4"></div>
     </div>
+    
 </div>
-<style>
-    .form-floating > .form-control {
-        height: calc(3.5rem + 2px);
-        padding: 1rem 0.75rem;
-    }
-    .form-floating > .form-control:focus,
-    .form-floating > .form-control:not(:placeholder-shown) {
-        padding-top: 1.625rem;
-        padding-bottom: 0.625rem;
-    }
-    .form-floating > label {
-        padding: 1rem 0.75rem;
-    }
-    .card-header {
-        background-color: var(--primary-color) !important;
-    }
-    .btn-primary {
-        background-color: var(--primary-color);
-        border-color: var(--primary-color);
-    }
-    .btn-primary:hover {
-        background-color: #2980b9;
-        border-color: #2980b9;
-    }
-    .invalid-feedback {
-        color: #dc3545;
-        font-size: 0.875em;
-    }
-    .alert-danger {
-        background-color: #f8d7da;
-        border-color: #f5c2c7;
-        color: #842029;
-    }
-</style>
 {% endblock %}
