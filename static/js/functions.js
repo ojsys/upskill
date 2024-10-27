@@ -1079,3 +1079,46 @@ var e = {
 
 };
 e.init();
+
+// static/js/functions.js
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize bootstrap components
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+  });
+
+  // Initialize other plugins only if they exist
+  if (typeof tns !== 'undefined') {
+      // Initialize tiny-slider
+      const sliders = document.querySelectorAll('.tiny-slider');
+      sliders.forEach(slider => {
+          // Your slider initialization
+      });
+  }
+
+  if (typeof GLightbox !== 'undefined') {
+      // Initialize GLightbox
+      const lightbox = GLightbox({
+          selector: '.glightbox'
+      });
+  }
+});
+
+// Handle navigation active states
+function setActiveNavItem() {
+  const currentPath = window.location.pathname;
+  const navLinks = document.querySelectorAll('.nav-link');
+  
+  navLinks.forEach(link => {
+      if (link.getAttribute('href') === currentPath) {
+          link.classList.add('active');
+      } else {
+          link.classList.remove('active');
+      }
+  });
+}
+
+// Run on page load
+setActiveNavItem();

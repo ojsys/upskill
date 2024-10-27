@@ -1,64 +1,62 @@
-<!-- templates/registration/login.html -->
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Log In - UpSkill{% endblock %}
+{% block title %} Log In - UpSkill {% endblock %}
 
 {% block content %}
+
 <div class="container mb-lg-5">
     <div class="row justify-content-center mb-lg-5">
-        <div class="col-md-4"></div>
-        <div class="col-md-4 mt-lg-5 mb-lg-5 justify-content-center">
-            <img class="d-block" style="margin: 0 auto;" src="{% static 'images/logo_upskill.png' %}" width="100" alt="Logo">
-            <div class="card shadow-lg border-0 rounded-lg mt-5">
-                <div class="card-header bg-primary text-white">
-                    <h3 class="text-center font-weight-light my-4">Login</h3>
-                </div>
-                <div class="card-body">
-                    <form method="post" novalidate>
-                        {% csrf_token %}
-                        <div class="form-floating mb-3">
-                            {{ form.username }}
-                            <label for="floatingUsername">Username</label>
-                            {% if form.username.errors %}
-                                <div class="invalid-feedback d-block">
-                                    {{ form.username.errors|join:", " }}
-                                </div>
-                            {% endif %}
-                        </div>
-                        <div class="form-floating mb-3">
-                            {{ form.password }}
-                            <label for="floatingPassword">Password</label>
-                            {% if form.password.errors %}
-                                <div class="invalid-feedback d-block">
-                                    {{ form.password.errors|join:", " }}
-                                </div>
-                            {% endif %}
-                        </div>
-                        {% if form.non_field_errors %}
-                            <div class="alert alert-danger" role="alert">
-                                {% for error in form.non_field_errors %}
-                                    {{ error }}
-                                {% endfor %}
+            <div class="col-md-4"></div>
+            <div class="col-md-4 mt-lg-5 mb-lg-5 justify-content-center">
+                <img class="d-block" style="margin: 0 auto;" src="{% static 'images/logo_upskill.png' %}" width="100" alt="Logo">
+                <div class="card shadow-lg border-0 rounded-lg mt-5">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="text-center font-weight-light my-4">Login</h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" novalidate>
+                            {% csrf_token %}
+                            <div class="form-floating mb-3">
+                                {{ form.username }}
+                                <label for="floatingUsername">Username</label>
+                                {% if form.username.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {{ form.username.errors|join:", " }}
+                                    </div>
+                                {% endif %}
                             </div>
-                        {% endif %}
-                        <div class="d-grid align-items-center mt-4 mb-0">
-                            <a class="small text-decoration-none text-center py-3" href="#">Forgot Password?</a>
-                            <button type="submit" class="btn btn-primary px-4">Login</button>
+                            <div class="form-floating mb-3">
+                                {{ form.password }}
+                                <label for="floatingPassword">Password</label>
+                                {% if form.password.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {{ form.password.errors|join:", " }}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            {% if form.non_field_errors %}
+                                <div class="alert alert-danger" role="alert">
+                                    {% for error in form.non_field_errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            <div class="d-grid align-items-center mt-4 mb-0">
+                                <a class="small text-decoration-none text-center py-3" href="#">Forgot Password?</a>
+                                <button type="submit" class="btn btn-primary px-4">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer text-center py-3">
+                        <div class="small">
+                            <a href="{% url 'register' %}" class="text-decoration-none">Need an account? Sign up!</a>
                         </div>
-                    </form>
-                </div>
-                <div class="card-footer text-center py-3">
-                    <div class="small">
-                        <a href="{% url 'register' %}" class="text-decoration-none">Need an account? Sign up!</a>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-4"></div>
-    </div>
-    
+            <div class="col-md-4"></div>
+    </div> <!--- End Row-->>  
 </div>
-
 
 {% endblock %}

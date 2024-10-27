@@ -21,14 +21,15 @@
 
 	<!-- Plugins CSS -->
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"> -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-icons.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/tiny-slider.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/glightbox.css' %}">
 
 	<!-- Theme CSS -->
 	<link id="style-switch" rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 
-
+	
 
 	{% block extra_css %}{% endblock %}
 	
@@ -43,7 +44,7 @@
 			<div class="container-fluid px-3 px-xl-5">
 				<!-- Logo START -->
 				<a class="navbar-brand" href="{% url 'home' %}">
-					<img class="light-mode-item navbar-brand-item" src="https://res.cloudinary.com/dn08cgwod/image/upload/v1729626048/Skill_sygdew.png" width="100" alt="logo">
+					<img class="light-mode-item navbar-brand-item" src="{% static 'images/logo_upskill.png' %}" width="100" alt="logo">
 					
 				</a>
 				<!-- Logo END -->
@@ -65,21 +66,21 @@
 					<ul class="navbar-nav navbar-nav-scroll me-auto">
 						<!-- Nav item 1 Demos -->
 						<li class="nav-item dropdown dropdown-menu-shadow-stacked">
-							<a class="nav-link bg-primary bg-opacity-10 rounded-3 text-primary px-3 py-3 py-xl-0" href="#" id="categoryMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-ui-radios-grid me-2"></i><span>Category</span></a>
+							<a class="nav-link bg-primary bg-opacity-10 rounded-3 text-primary px-3 py-3 py-xl-0" href="#" id="categoryMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-list-ul me-2"></i><span>Category</span></a>
 							<ul class="dropdown-menu" aria-labelledby="categoryMenu">
 
 								<!-- Dropdown submenu -->
 							
-								<li> <a class="dropdown-item" href="#">Music</a></li>
-								<li> <a class="dropdown-item" href="#">Lifestyle</a></li>
-								<li> <a class="dropdown-item" href="#">IT & software</a></li>
-								<li> <a class="dropdown-item" href="#">Personal development</a></li>
+								<li> <a class="dropdown-item" href="#">Frontend</a></li>
+								<li> <a class="dropdown-item" href="#">Backend</a></li>
+								<li> <a class="dropdown-item" href="#">DevOps</a></li>
+								<!-- <li> <a class="dropdown-item" href="#">Personal development</a></li>
 								<li> <a class="dropdown-item" href="#">Health & fitness</a></li>
 								<li> <a class="dropdown-item" href="#">Teaching</a></li>
 								<li> <a class="dropdown-item" href="#">Social science</a></li>
 								<li> <a class="dropdown-item" href="#">Math & logic</a></li>
 								<li> <hr class="dropdown-divider"></li>
-								
+								 -->
 							</ul>
 						</li>
 					</ul>
@@ -111,7 +112,7 @@
 						<!-- Nav item 5 link-->
 						<li class="nav-item">
 							<a class="nav-link" href="{% url 'register' %}">
-								<i class="fas fa-ellipsis-h"></i> Register
+								Register
 							</a>
 						</li>
 						{% endif %}
@@ -155,7 +156,7 @@
 						<!-- <li><a class="dropdown-item" href="#"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
 						<li><a class="dropdown-item" href="#"><i class="bi bi-gear fa-fw me-2"></i>Account Settings</a></li>
 						<li><a class="dropdown-item" href="#"><i class="bi bi-info-circle fa-fw me-2"></i>Help</a></li> -->
-						<li><a class="dropdown-item bg-danger-soft-hover" href="#"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
+						<li><a class="dropdown-item bg-danger-soft-hover" href="#"><i class="fa fa-right-from-bracket me-2"></i>Sign Out</a></li>
 						
 						
 					</ul>
@@ -289,8 +290,8 @@
 	Footer END -->
 
 <!-- Back to top -->
-	<div class="back-top"><i class="bi bi-arrow-up-short position-absolute top-50 start-50 translate-middle"></i></div>
-
+	<!-- <div class="back-top"><i class="fa fa-chevron-up position-absolute top-50 start-50 translate-middle"></i></div> -->
+	<div class="back-top"><i class="fa fa-chevron-up"></i></div>
 	<!-- Bootstrap JS -->
 	<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 

@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
+from django.views.decorators.cache import cache_control
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import RegisterForm, CustomAuthenticationForm
+from .forms import CustomUserCreationForm, CustomAuthenticationForm
 
-
+@cache_control(public=True, max_age=3600)
 def login_view(request):
     if request.method == 'POST':
         form = CustomAuthenticationForm(request, data=request.POST)
@@ -25,18 +26,20 @@ def login_view(request):
     return render(request, 'registration/login.html', {'form':form})
 
 
-
+@cache_control(public=True, max_age=3600)
 def register(request):
-    if request.method == "POST":
-        form = RegisterForm(request.POST)
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect("home")
+            messages.success(request, "Registration successful!")
+            return redirect('home')
+        else:
+            messages.error(request, "Registration failed. Please correct the errors below.")
     else:
-        form = RegisterForm()
-    return render(request, "accounts/register.html", {"form": form})
-
+        form = CustomUserCreationForm()
+    return render(request, 'accounts/register.html', {'form': form})
 
 def custom_logout(request):
     logout(request)

@@ -1,33 +1,115 @@
-<!-- templates/registration/register.html -->
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 
-{% block title %}Register{% endblock %}
+
+{% block title %}Register - UpSkill LMS Platform{% endblock %}
 
 {% block content %}
-<div class="container mb-lg-5">
-    <div class="row justify-content-center mb-lg-5">
-        <div class="col-md-4"></div>
-        <div class="col-md-4 mt-lg-5 mb-lg-5 justify-content-center">
-            <img class="d-block" style="margin: 0 auto;" src="{% static 'images/logo_upskill.png' %}" width="100" alt="Logo">
-            <div class="card shadow-lg border-0 rounded-lg mt-5">
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg border-0 rounded-lg mt-5 mb-5">
                 <div class="card-header bg-primary text-white">
                     <h3 class="text-center font-weight-light my-4">Create Account</h3>
                 </div>
                 <div class="card-body">
                     <form method="post" novalidate>
                         {% csrf_token %}
-                        {% for field in form %}
-                            <div class="form-floating mb-3">
-                                {{ field }}
-                                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                                {% if field.errors %}
-                                    <div class="invalid-feedback d-block">
-                                        {{ field.errors|join:", " }}
-                                    </div>
-                                {% endif %}
+                        
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                                    {{ message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    {{ form.first_name }}
+                                    <label for="{{ form.first_name.id_for_label }}">First Name</label>
+                                    {% if form.first_name.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {{ form.first_name.errors|join:", " }}
+                                        </div>
+                                    {% endif %}
+                                </div>
                             </div>
-                        {% endfor %}
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    {{ form.last_name }}
+                                    <label for="{{ form.last_name.id_for_label }}">Last Name</label>
+                                    {% if form.last_name.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {{ form.last_name.errors|join:", " }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            {{ form.email }}
+                            <label for="{{ form.email.id_for_label }}">Email address</label>
+                            {% if form.email.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {{ form.email.errors|join:", " }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    {{ form.phone_number }}
+                                    <label for="{{ form.phone_number.id_for_label }}">Phone Number</label>
+                                    {% if form.phone_number.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {{ form.phone_number.errors|join:", " }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    {{ form.gender }}
+                                    <label for="{{ form.gender.id_for_label }}">Gender</label>
+                                    {% if form.gender.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {{ form.gender.errors|join:", " }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    {{ form.password1 }}
+                                    <label for="{{ form.password1.id_for_label }}">Password</label>
+                                    {% if form.password1.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {{ form.password1.errors|join:", " }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    {{ form.password2 }}
+                                    <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
+                                    {% if form.password2.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {{ form.password2.errors|join:", " }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="mt-4 mb-0">
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-primary btn-block">Create Account</button>
@@ -36,12 +118,16 @@
                     </form>
                 </div>
                 <div class="card-footer text-center py-3">
-                    <div class="small"><a href="{% url 'login' %}" class="text-decoration-none">Have an account? Go to login</a></div>
+                    <div class="small">
+                        <a href="{% url 'login' %}" class="text-decoration-none">Have an account? Go to login</a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4"></div>
     </div>
-    
 </div>
+{% endblock %}
+
+{% block extra_css %}
+
 {% endblock %}

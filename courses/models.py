@@ -1,6 +1,7 @@
 
 from django.db import models
 from django.contrib.auth.models import User
+from accounts.models import CustomUser
 
 class Course(models.Model):
     title = models.CharField(max_length=200)
@@ -24,7 +25,7 @@ class Lesson(models.Model):
         return f"{self.course.title} - {self.title}"
 
 class UserProgress(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
     completed = models.BooleanField(default=False)
     completed_at = models.DateTimeField(null=True, blank=True)
@@ -59,7 +60,7 @@ class Answer(models.Model):
         return f"{self.question.text[:50]} - {self.text}"
 
 class QuizAttempt(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     score = models.IntegerField()
     completed_at = models.DateTimeField(auto_now_add=True)
@@ -74,7 +75,7 @@ class QuizAttempt(models.Model):
 #### End of Models for Quiz
 
 class Enrollment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     enrolled_at = models.DateTimeField(auto_now_add=True)
 
