@@ -135,7 +135,7 @@
 				<!-- Profile START -->
 				<div class="dropdown ms-1 ms-lg-0">
 					<a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button" data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown" aria-expanded="false">
-						<img class="avatar-img rounded-circle" src="https://res.cloudinary.com/dn08cgwod/image/upload/c_thumb,w_200,g_face/v1729630572/01_nsvchb.png" width="30" alt="avatar">
+						<img class="avatar-img rounded-circle" src="{% static 'images/user_icon_1.png' %}" width="30" alt="avatar">
 					</a>
 					<ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
 						<!-- Profile info -->
@@ -143,11 +143,11 @@
 							<div class="d-flex align-items-center">
 								<!-- Avatar -->
 								<div class="avatar me-3">
-									<img class="avatar-img rounded-circle shadow" src="https://res.cloudinary.com/dn08cgwod/image/upload/c_thumb,w_200,g_face/v1729630572/01_nsvchb.png" width="40" alt="avatar">
+									<img class="avatar-img rounded-circle shadow" src="{% static 'images/user_icon.png' %}" width="40" alt="avatar">
 								</div>
 								<div>
-									<a class="h6" href="#">Lori Ferguson</a>
-									<p class="small m-0">example@gmail.com</p>
+									<a class="h6" href="#">{{ user.first_name }} {{ user.last_name }}</a>
+									<p class="small m-0">{{ user.email }}</p>
 								</div>
 							</div>
 							<hr>
@@ -156,7 +156,7 @@
 						<!-- <li><a class="dropdown-item" href="#"><i class="bi bi-person fa-fw me-2"></i>Edit Profile</a></li>
 						<li><a class="dropdown-item" href="#"><i class="bi bi-gear fa-fw me-2"></i>Account Settings</a></li>
 						<li><a class="dropdown-item" href="#"><i class="bi bi-info-circle fa-fw me-2"></i>Help</a></li> -->
-						<li><a class="dropdown-item bg-danger-soft-hover" href="#"><i class="fa fa-right-from-bracket me-2"></i>Sign Out</a></li>
+						<li><a class="dropdown-item bg-danger-soft-hover" href="{% url 'logout' %}"><i class="fa fa-right-from-bracket me-2"></i>Sign Out</a></li>
 						
 						
 					</ul>
